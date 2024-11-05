@@ -5,7 +5,7 @@ import Chad.Exception.ChadException;
 import Chad.Parser.Parser;
 import Chad.Storage.Storage;
 import Chad.TaskList.TaskList;
-import Chad.Ui.TextUi;
+import Chad.Ui.Gui;
 
 /**
  * The main class that handles the execution of the task management application.
@@ -19,7 +19,7 @@ public class Chad {
     TaskList tasks;
 
     // User interface for input and output
-    TextUi ui;
+    Gui ui;
 
     // Indicates the exit status of the application
     boolean isExit;
@@ -33,7 +33,7 @@ public class Chad {
      * @param filePath The path to the file used for storing tasks.
      */
     public Chad(String filePath) {
-        ui = new TextUi(); // Initialize the user interface
+        ui = new Gui(); // Initialize the user interface
         tasks = new TaskList(); // Initialize the task list regardless of storage success
         initializeStorage(filePath); // Handle retrieval of stored data
     }
@@ -71,15 +71,28 @@ public class Chad {
     void executeUserCommand() {
         try {
             String fullCommand = ui.readCommand(); // Read the command from the user
-            ui.showLine(); // Show the divider line
+            //ui.showLine(); // Show the divider line
             Command command = Parser.parse(fullCommand); // Parse the command string into a Command object
             command.execute(tasks, ui, storage); // Execute the command with the current task list, UI, and storage
             isExit = command.isExit(); // Update the exit condition based on the command's result
         } catch (ChadException e) {
             ui.showError(e.getMessage()); // Display error message to the user
         } finally {
-            ui.showLine(); // Show the divider line regardless of outcome
+            //ui.showLine(); // Show the divider line regardless of outcome
         }
+    }
+    public String getResponse(String userInput) {
+        StringBuilder response = new StringBuilder();
+        try {
+            Command command = Parser.parse(userInput); // Parse the user command
+            command.execute(tasks, ui, storage); // Execute the command logic
+            
+            // Add response handling as necessary
+            response.append("Command executed successfully."); // Example response
+        } catch (ChadException e) {
+            response.append("Error: ").append(e.getMessage()); // Handle errors
+        }
+        return response.toString(); // Return generated response
     }
 
     /**

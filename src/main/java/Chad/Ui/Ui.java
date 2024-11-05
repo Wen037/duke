@@ -9,7 +9,7 @@ public interface Ui {
     }
     void showWelcome();
     String readCommand();
-    void showLine();
+    //void showLine();
     void showError(String errmsg);
     void showBye();
     void showTaskList(TaskList tasks);

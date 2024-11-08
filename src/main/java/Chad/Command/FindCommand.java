@@ -7,7 +7,7 @@ import Chad.Ui.Ui;
 
 public class FindCommand extends Command {
 
-    private String findIdx;
+    private final String findIdx;
 
     public FindCommand(String findIdx) {
         this.findIdx = findIdx;
@@ -20,7 +20,7 @@ public class FindCommand extends Command {
         //ArrayList<Task> taskTolist = tasks.getTaskbyDeadline(listDate);
         TaskList taskTolist = tasks.findTaskbyIdx(findIdx);
         ui.showTaskList(taskTolist); // UI method to display the task list
-        storage.save(tasks.toString());
+        //storage.save(tasks.toString());
     }
 
 }

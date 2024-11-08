@@ -61,26 +61,22 @@ public class Chad {
         ui.showWelcome(); // Show the welcome message to the user
         isExit = false; // Set exit condition to false to enter the loop
         while (!isExit) {
-            String fullCommand = ui.readCommand();
-            isExit = executeUserCommand(fullCommand); // Main change
+            executeUserCommand(); // Execute user commands until exit condition is met
         }
     }
-
 
     /**
      * Executes commands entered by the user.
      */
-    boolean executeUserCommand(String fullCommand) {
+    void executeUserCommand() {
         try {
             String fullCommand = ui.readCommand(); // Read the command from the user
             //ui.showLine(); // Show the divider line
             Command command = Parser.parse(fullCommand); // Parse the command string into a Command object
             command.execute(tasks, ui, storage); // Execute the command with the current task list, UI, and storage
-            return command.isExit();
-            //isExit = command.isExit(); // Update the exit condition based on the command's result
+            isExit = command.isExit(); // Update the exit condition based on the command's result
         } catch (ChadException e) {
             ui.showError(e.getMessage()); // Display error message to the user
-            return false;
         } finally {
             //ui.showLine(); // Show the divider line regardless of outcome
         }
@@ -108,7 +104,7 @@ public class Chad {
 
     /**
      * The application entry point.
-     *
+     * 
      * @param args Command-line arguments (not used in this implementation).
      */
     public static void main(String[] args) {

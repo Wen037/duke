@@ -1,12 +1,15 @@
 package Chad.Storage;
 
-import Chad.Exception.ChadException;
-
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
+import Chad.Exception.ChadException;
+import java.io.FileNotFoundException; 
 
 public class Storage {
-    private final File file;
+    private File file;
 
     // Constructor to initialize the Storage class with the specified path
     public Storage(String path) throws ChadException {

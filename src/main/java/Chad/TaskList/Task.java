@@ -12,26 +12,27 @@ public class Task {
         this.isDone = false;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return this.description;
     }
-
-    public void setTask() {
-        this.isDone = true;
-        this.completeTime = LocalDateTime.now();
+    public void setTask()
+    {
+        this.isDone=true;
+        this.completeTime=LocalDateTime.now();
     }
-
-    public void setCompleteTime(LocalDateTime completeTime) {
-        this.completeTime = completeTime;
+    public void setCompleteTime(LocalDateTime completeTime)
+    {
+        this.completeTime=completeTime;
     }
-
-    public LocalDateTime getCompleteTime() {
+    public LocalDateTime getCompleteTime(){
         return this.completeTime;
     }
 
-    public void unSetTask() {
-        this.isDone = false;
-        this.completeTime = null;
+    public void unSetTask()
+    {
+        this.isDone=false;
+        this.completeTime=null;
     }
 
     public String getStatusIcon() {
@@ -42,6 +43,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return (isDone ? "[X]" : "[ ]") + " " + this.description;
+        return (isDone ? "[X]" : "[ ]") +" " + this.description;
     }
 }

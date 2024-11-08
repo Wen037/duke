@@ -5,13 +5,14 @@ public class Event extends Task {
     protected String startsAt;
     protected String endsAt;
 
-    public Event(String description, String startsAt, String endsAt) {
+    public Event(String description, String startsAt,String endsAt) {
         super(description);
         this.startsAt = startsAt;
-        this.endsAt = endsAt;
+        this.endsAt=endsAt;
     }
 
-    public String getEnddate() {
+    public String getEnddate()
+    {
         return endsAt;
     }
 

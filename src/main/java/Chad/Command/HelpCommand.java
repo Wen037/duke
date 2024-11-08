@@ -7,8 +7,7 @@ import Chad.Ui.Ui;
 
 public class HelpCommand extends Command {
 
-    private final String helpType;
-
+    private String helpType;
     //before function calll convert to uppercase..
     public HelpCommand(String helpType) {
         this.helpType = helpType.toUpperCase();
@@ -17,8 +16,8 @@ public class HelpCommand extends Command {
 
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws ChadException {
-        HelpType mType = HelpType.valueOf(helpType);
-        String HelpMessage = mType.getMessage(); // choose HelpMessage according to user input helpType,
+        HelpType mType=HelpType.valueOf(helpType);
+        String HelpMessage=mType.getMessage(); // choose HelpMessage according to user input helpType,
         ui.showHelp(HelpMessage);
         //storage.save(tasks.toString());
     }

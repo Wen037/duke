@@ -7,7 +7,7 @@ import Chad.Ui.Ui;
 
 public class ListByDateCommand extends Command {
 
-    private final String listDate;
+    private String listDate;
 
     public ListByDateCommand(String listDate) {
         this.listDate = listDate;

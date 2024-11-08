@@ -1,7 +1,7 @@
 package Chad.Command;
 
-import Chad.Storage.Storage;
 import Chad.TaskList.TaskList;
+import Chad.Storage.Storage;
 import Chad.Ui.Ui;
 
 public class ExitCommand extends Command {
